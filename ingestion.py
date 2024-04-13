@@ -1,5 +1,7 @@
 from dotenv import load_dotenv
 
+from backend.core import run_llm
+
 load_dotenv()
 
 import os
@@ -9,18 +11,17 @@ from langchain_openai import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Pinecone as PineconeLangChain
 from pinecone import Pinecone
+from constants import INDEX_NAME
 
 
 pc = Pinecone(
     api_key=os.environ.get("PINECONE_API_KEY"),
 )
 
-INDEX_NAME = "langchain-doc-index"
-
 
 def ingest_docs():
     loader = ReadTheDocsLoader(
-        "langchain-docs\\api.python.langchain.com\\en\\latest", encoding='utf-8'
+        "langchain-docs\\api.python.langchain.com\\en\\latest", encoding="utf-8"
     )
 
     raw_documents = loader.load()
@@ -40,4 +41,5 @@ def ingest_docs():
 
 
 if __name__ == "__main__":
-    ingest_docs()
+    #ingest_docs()
+    run_llm(query="What is RetrievalQA chain?")
