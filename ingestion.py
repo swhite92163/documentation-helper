@@ -41,5 +41,5 @@ def ingest_docs():
 
 
 if __name__ == "__main__":
-    #ingest_docs()
+    # ingest_docs()
     run_llm(query="What is RetrievalQA chain?")
