@@ -3,7 +3,7 @@ from pydoc import Helper
 from typing import Any
 from dotenv import load_dotenv
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
-from langchain.chains.retrieval_qa.base import RetrievalQA
+from langchain.chains import RetrievalQA
 from langchain_community.vectorstores import Pinecone as PineconeLangChain
 from pinecone import Pinecone
 
@@ -32,4 +32,4 @@ def run_llm(query: str) -> Any:
 
 if __name__ == "__main__":
     # ingest_docs()
-    print(run_llm(query="What is Langchain?"))
+    print(run_llm(query=""))
